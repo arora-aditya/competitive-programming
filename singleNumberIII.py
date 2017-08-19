@@ -1,6 +1,6 @@
 def singleNumber(nums):
     """
-    https://leetcode.com/problems/single-number-ii/#/description
+    https://leetcode.com/problems/single-number-iii/#/description
     :type nums: List[int]
     :rtype: int
     """
