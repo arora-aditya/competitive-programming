@@ -6,12 +6,9 @@ class Solution(object):
         https://leetcode.com/problems/binary-number-with-alternating-bits/description/
         """
         xBin = "{0:b}".format(n)
+        print(xBin)
         Value = xBin[0]
-        for x in xBin:
-            if x != Value:
-                return False
-            if Value == '1':
-                Value = '0'
-            else:
-                Value = '1'                
+        for i in range(len(xBin)-1):
+            if xBin[i] == xBin[i+1]:
+                return False                       
         return True
