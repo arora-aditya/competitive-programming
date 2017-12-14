@@ -1,10 +1,10 @@
 class Solution(object):
     def toHex(self, num):
         """
+        https://leetcode.com/problems/convert-a-number-to-hexadecimal/description/
         :type num: int
         :rtype: str
         """
-        print(hex(num))
         st = ""
         base16 = ["0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f"]
         if num > 0:
@@ -15,8 +15,8 @@ class Solution(object):
         elif num == 0:
             return "0"
         else:
-            base16 = ["0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f"][::-1]
-            
+            base16 = ["0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f"]
+            base16 = base16[::-1]
             num = num*(-1)
             while num > 0:
                 st += base16[num%16]
@@ -25,6 +25,15 @@ class Solution(object):
             st = st[::-1]
             if(len(st) < 8):
                 st = (8-len(st))*"f" + st
-            return st[:-1]+add_digit[st[-1]]
+            print(st)
+            if st[-1] == "f":
+                i = 2
+                while st[-i] == "f":
+                    i += 1
+                for j in range(2,i+1):
+                    st = st[:-j] + add_digit[st[-j]] + st[-j+1:]
+                return st[:-1]+add_digit[st[-1]]
+            else:
+                 return st[:-1]+add_digit[st[-1]]
                 
         
