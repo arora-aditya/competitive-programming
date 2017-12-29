@@ -1,3 +1,4 @@
 template
 .DS_Store
 article.md
+.ipynb_checkpoints
