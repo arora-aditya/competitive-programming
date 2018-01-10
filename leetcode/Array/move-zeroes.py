@@ -1,18 +1,18 @@
-count=0
-def moveZeroes(nums):
-    """
-    https://leetcode.com/problems/
-    :type nums: List[int]
-    :rtype: void Do not return anything, modify nums in-place instead.
-    """
-    length=len(nums)+1
-    def isZero(num,length=length):
-        global count
-        if num==0:
-            return length
-        count +=1
-        return count
-    nums.sort(key=isZero)
-    print(nums)
-
-moveZeroes([0, 1])
+class Solution:
+    def moveZeroes(self, nums):
+        """
+        https://leetcode.com/problems/move-zeroes/description/
+        :type nums: List[int]
+        :rtype: void Do not return anything, modify nums in-place instead.
+        """
+        le = len(nums)
+        cnt = 0
+        i = 0
+        while i < le:
+            if nums[i] == 0:
+                nums.pop(i)
+                cnt += 1
+                le -= 1
+            else:
+                i += 1
+        nums.extend([0]*cnt)
