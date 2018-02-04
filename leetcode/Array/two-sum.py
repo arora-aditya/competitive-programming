@@ -1,4 +1,4 @@
-class Solution:
+class Solution(object):
     def twoSum(self, nums, target):
         """
         https://leetcode.com/problems/two-sum/description/
@@ -6,12 +6,10 @@ class Solution:
         :type target: int
         :rtype: List[int]
         """
-        if len(nums) <= 1:
-            return False
-        buff_dict = {}
+        di = collections.defaultdict(list)
         for i in range(len(nums)):
-            if nums[i] in buff_dict:
-                return [buff_dict[nums[i]], i]
-            else:
-                buff_dict[target - nums[i]] = i
-        
+            if(nums[i] in di):
+                return [di[nums[i]][0], i]
+            di[target - nums[i]] = di[target - nums[i]]
+            di[target - nums[i]].append(i)
+        print(di)
