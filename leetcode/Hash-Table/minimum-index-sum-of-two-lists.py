@@ -6,19 +6,16 @@ class Solution(object):
         :type list2: List[str]
         :rtype: List[str]
         """
-        l1 = set(list1)
-        l2 = set(list2)
-        l = l1 & l2
-        save = []
-        mi = len(list1) + len(list2)
-        if len(l) == 0:
-            return list(l)[0]
-        for i in (l):
-            k = list1.index(i) + list2.index(i)
-            if k < mi:
-                mi = k
-                del save[:]
-                save = [i]
-            elif k == mi:
-                save.append(i)
-        return save
+        exist = {x: i for i, x in enumerate(list1)}
+        tmp = float('inf')
+        ans = []
+
+        for i, x in enumerate(list2):
+            if x in exist:
+                if i + exist[x] < tmp:
+                    tmp = i + exist[x]
+                    ans = [x]
+                elif i + exist[x] == tmp:
+                    ans.append(x)
+
+        return ans
