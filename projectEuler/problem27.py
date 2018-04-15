@@ -1,3 +1,5 @@
+# https://projecteuler.net/problem=27
+
 def isPrime(n):
     if n==2 or n==3: return True
     if n%2==0 or n<2: return False

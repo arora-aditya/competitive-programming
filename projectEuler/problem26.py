@@ -1,4 +1,4 @@
-# https://projecteuler.net/problem=25
+# https://projecteuler.net/problem=26
 
 import itertools
 def countMax(n):
