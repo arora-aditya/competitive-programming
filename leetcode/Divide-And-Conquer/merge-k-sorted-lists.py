@@ -7,9 +7,9 @@
 class Solution(object):
     def mergeKLists(self, lists):
         """
+        https://leetcode.com/problems/merge-k-sorted-lists/description/
         :type lists: List[ListNode]
         :rtype: ListNode
-        https://leetcode.com/problems/merge-k-sorted-lists/description/
         """
         r = ListNode(0.12345)
         s = r
