@@ -6,9 +6,6 @@ class Solution(object):
         :type num2: str
         :rtype: str
         """
-        # return str(int(num1)*int(num2))
-        num1 = num1.encode('ascii','ignore')
-        num2 = num2.encode('ascii','ignore')
         su = 0
         i = 0
         le2 = len(num2)
