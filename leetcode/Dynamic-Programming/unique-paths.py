@@ -6,14 +6,12 @@ class Solution:
         :type n: int
         :rtype: int
         """
-        ma, mi = max(m-1,n-1) , min(m-1,n-1)
-        su = m + n - 2
-        # print(su, ma, mi)
-        k = 1
-        for i in range(su,ma,-1):
-            k = k * i
-            # print(k)
-        for i in range(1,mi+1):
-            k = k / i
-            # print(k)
-        return int(k)
+        dp = [[1]*n for _ in range(m)]
+        for i in range(m):
+            dp[i][0] = 1
+        for j in range(n):
+            dp[0][j] = 1
+        for i in range(1,m):
+            for j in range(1,n):
+                dp[i][j] = dp[i-1][j] + dp[i][j-1]
+        return dp[m-1][n-1]
