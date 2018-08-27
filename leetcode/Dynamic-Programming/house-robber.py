@@ -1,18 +1,21 @@
-class Solution:
-    """
-    https://leetcode.com/problems/house-robber/#/description
-    :type nums: List[int]
-    :rtype: int
-    """
-    def __init__(self,nums):
-        self.nums=nums
-
+class Solution(object):
     def rob(self, nums):
-
-        last, now = 0, 0
-
-        for i in nums:
-            print(i,"\t",last,"\t",now,"\t",last+i)
-            last, now = now, max(last + i, now)
-
-        return now
+        """
+        https://leetcode.com/problems/house-robber/description/
+        :type nums: List[int]
+        :rtype: int
+        """
+        lea = len(nums)
+        if lea == 0:
+            return 0
+        if lea == 1:
+            return nums[0]
+        if lea == 2:
+            return max(nums)
+        if lea == 3:
+            return max(nums[0] + nums[2], nums[1])
+        dp = [0] * lea
+        dp[0], dp[1], dp[2] = nums[0], nums[1], nums[0] + nums[2]
+        for i in range(3, lea):
+            dp[i] = nums[i] + max(dp[i-2], dp[i-3])
+        return max(dp[-1], dp[-2])
