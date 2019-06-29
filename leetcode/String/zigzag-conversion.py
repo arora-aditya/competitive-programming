@@ -1,11 +1,6 @@
 class Solution:
-    def convert(self, s, numRows):
-        """
-        https://leetcode.com/problems/zigzag-conversion/description/
-        :type s: str
-        :type numRows: int
-        :rtype: str
-        """
+    def convert(self, s: str, numRows: int) -> str:
+        # https://leetcode.com/problems/zigzag-conversion/
         if numRows<=1: return s
         ans=[""]*numRows
         i=0
