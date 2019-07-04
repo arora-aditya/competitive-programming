@@ -1,21 +1,9 @@
 class Solution:
-    def letterCombinations(self, digits):
-        """
-        https://leetcode.com/problems/letter-combinations-of-a-phone-number/description/
-        :type digits: str
-        :rtype: List[str]
-        """
-        mapping = {'1':'','2':['a','b','c'],'3':['d','e','f'],'4':['g','h','i'],'5':['j','k','l'],'6':['m','n','o'],'7':['p','q','r','s'],'8':['t','u','v'],'9':['w','x','y','z']}
-        if digits == '':
-            return []
-        else:
-            ans = mapping[digits[0]]
-            # print(ans)
-            for i in range(1,len(digits)):
-                l = []
-                for j in mapping[digits[i]]:
-                    for k in ans:
-                        l.append(k+j)
-                ans = l
-                # print(ans)
-        return ans
+    letters = [None, None, ['a', 'b', 'c'], ['d', 'e', 'f'], ['g', 'h', 'i'], ['j', 'k', 'l'], ['m', 'n', 'o'], ['p', 'q', 'r', 's'], ['t', 'u', 'v'], ['w', 'x', 'y', 'z']]
+
+    def letterCombinations(self, digits: str) -> List[str]:
+        # https://leetcode.com/problems/letter-combinations-of-a-phone-number
+        if not digits: return []
+        pre = Solution.letterCombinations(None, digits[:-1])
+        if pre == []: pre = [""]
+        return [x + y for x in pre for y in Solution.letters[int(digits[-1])]]

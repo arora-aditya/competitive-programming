@@ -5,13 +5,8 @@
 #         self.next = None
 
 class Solution:
-    def mergeTwoLists(self, l1, l2):
-        """
-        https://leetcode.com/problems/merge-two-sorted-lists/description/
-        :type l1: ListNode
-        :type l2: ListNode
-        :rtype: ListNode
-        """
+    def mergeTwoLists(self, l1: ListNode, l2: ListNode) -> ListNode:
+        # https://leetcode.com/problems/merge-two-sorted-lists/description/
         head = ListNode(None)
         l = head
         l1Parse = l1
@@ -30,13 +25,13 @@ class Solution:
             l.val = l1Parse.val
             add = ListNode(None)
             l.next = add
-            l = l.next
+            l = l.next 
             l1Parse = l1Parse.next
         while l2Parse is not None:
             l.val = l2Parse.val
             add = ListNode(None)
             l.next = add
-            l = l.next
+            l = l.next 
             l2Parse = l2Parse.next
         l = head
         while l.next is not None:

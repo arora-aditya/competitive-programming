@@ -5,13 +5,8 @@
 #         self.next = None
 
 class Solution:
-    def removeNthFromEnd(self, head, n):
-        """
-        https://leetcode.com/problems/remove-nth-node-from-end-of-list/description/
-        :type head: ListNode
-        :type n: int
-        :rtype: ListNode
-        """
+    def removeNthFromEnd(self, head: ListNode, n: int) -> ListNode:
+        # https://leetcode.com/problems/remove-nth-node-from-end-of-list/
         newHead = ListNode(0)
         newHead.next = head
         x1, x2 = newHead, newHead

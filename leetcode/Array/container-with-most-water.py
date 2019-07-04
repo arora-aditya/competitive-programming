@@ -1,10 +1,6 @@
-class Solution(object):
-    def maxArea(self, height):
-        """
-        https://leetcode.com/problems/container-with-most-water/description/
-        :type height: List[int]
-        :rtype: int
-        """
+class Solution:
+    def maxArea(self, height: List[int]) -> int:
+        # https://leetcode.com/problems/container-with-most-water/description/
         max_area = area = 0
         left, right = 0, len(height) - 1
         while left < right:

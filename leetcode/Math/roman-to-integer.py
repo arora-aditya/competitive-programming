@@ -1,24 +1,13 @@
-def romanToInt(s):
-    """
-    https://leetcode.com/problems/roman-to-integer/#/description
-    :type s: str
-    :rtype: int
-    """
-    roman_list = "IVXLCDM"
-    roman_dict={'I':1,"IV":4, "V":5, "IX":9, "X":10, "XL":40, "L":50, "XC":90, "C":100, "CD":400, "D":500, "DM":900, "M":1000}
-    i=0
-    num=0
-    while i < len(s):
-        try:
-            if roman_list.index(s[i]) < roman_list.index(s[i+1]):
-                num += roman_dict[s[i]+s[i+1]]                
-                i += 2
+class Solution:
+    def romanToInt(self, s: str) -> int:
+        # https://leetcode.com/problems/roman-to-integer
+        if not s:
+            return 0
+        roman = {'I':1, 'V':5, 'X':10, 'L':50, 'C':100, 'D':500, 'M':1000}
+        su = 0
+        for i in range(len(s)-1):
+            if roman[s[i]] < roman[s[i+1]]:
+                su -= roman[s[i]]
             else:
-                num += roman_dict[s[i]]
-                i += 1
-        except IndexError:
-            num += roman_dict[s[i]]
-            i += 1
-    return num
-
-print(romanToInt("MMCXXIV"))
+                su += roman[s[i]]
+        return su + roman[s[-1]]

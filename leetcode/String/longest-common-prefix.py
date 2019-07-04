@@ -1,16 +1,8 @@
 class Solution:
-    def transpose(self, A):
-        """
-        :type A: List[List[int]]
-        :rtype: List[List[int]]
-        """
+    def transpose(self, A: List[List[int]]) -> List[List[int]]:
         return list(zip(*A))
-    def longestCommonPrefix(self, strs):
-        """
-        https://leetcode.com/problems/longest-common-prefix/description/
-        :type strs: List[str]
-        :rtype: str
-        """
+    def longestCommonPrefix(self, strs: List[str]) -> str:
+        # https://leetcode.com/problems/longest-common-prefix/description/
         if strs == []:
             return ""
         l = []
