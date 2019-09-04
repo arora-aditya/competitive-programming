@@ -1,35 +1,27 @@
-def solve(board):
-    """
-    https://leetcode.com/problems/surrounded-regions/description/
-    :type board: List[List[str]]
-    :rtype: void Do not return anything, modify board in-place instead.
-    """
-    def surround(x,y):
-        print(board[x][y])
-        try:
-            print(board[x-1][y]+board[x+1][y]+board[x][y-1]+board[x][y+1])
-            if board[x-1][y]+board[x+1][y]+board[x][y-1]+board[x][y+1] == "XXXX":
-                return True
-        except:
-            True
-        return False
-    board_matrix=[[True,True,True,True],[True,True,True,True],[True,True,True,True],[True,True,True,True]]
-    while board_matrix != [[False,False,False,False],[False,False,False,False],[False,False,False,False],[False,False,False,False]]:
-        height = len(board)
-        width = len(board[0])
-        flag=0
-        for i in range(height):
-            if flag != 1:
-                for j in range(width):
-                    print(board)
-                    if board[i][j]=='O':
-                        true_false=surround(i,j)
-                        if true_false:
-                            board[i][j]="X"
-                            flag=1
-                            board_matrix[i][j]=False
-                            break
-            else:
-                break
-    return board
-solve(["XXXX","XOOX","XXOX","XOXX"])
+class Solution:
+    def solve(self, board: List[List[str]]) -> None:
+        """
+        Do not return anything, modify board in-place instead.
+        """
+        if not board:
+            return board
+        queue = collections.deque([])
+        rSet = set([0, len(board)-1])
+        cSet = set([0, len(board[0])-1])
+        for r in range(len(board)):
+            for c in range(len(board[0])):
+                if (r in rSet or c in cSet) and board[r][c] == "O":
+                    queue.append((r, c))
+        while queue:
+            r, c = queue.popleft()
+            if 0<=r<len(board) and 0<=c<len(board[0]) and board[r][c] == "O":
+                board[r][c] = "D"
+                queue.append((r-1, c)); queue.append((r+1, c))
+                queue.append((r, c-1)); queue.append((r, c+1))
+
+        for r in range(len(board)):
+            for c in range(len(board[0])):
+                if board[r][c] == "O":
+                    board[r][c] = "X"
+                elif board[r][c] == "D":
+                    board[r][c] = "O"
